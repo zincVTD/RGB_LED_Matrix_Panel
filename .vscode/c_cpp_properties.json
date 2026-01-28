@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "STM32",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "D:/ARM GNU Toolchain/10 2021.10/arm-none-eabi/include",
+                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/Include",
+                "D:/Keil Core/ARM/ARMCC/include",
+                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc",
+                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/templates",
+                "D:/Keil Core/ARM/PACK/ARM/CMSIS/5.3.0/CMSIS/Include"
+            ],
+            "defines": [
+                "STM32F103xB",
+                "USE_STDPERIPH_DRIVER"
+            ],
+            "compilerPath": "D:/ARM GNU Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}
