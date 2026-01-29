@@ -1,41 +1,53 @@
 # Toolchain
 CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
-OBJCOPY = arm-none-eabi-objcopy
 
 # Flags
 CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -Wall -g -O0 \
-    -Iinclude \
-    -Ilib/SPL/inc \
-    -Ilib/CMSIS/Core \
-	-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER \
+    -Isystem/inc \
+    -Idriver/inc \
+	-DSTM32F10X_MD \
+	-DUSE_STDPERIPH_DRIVER
 
 LDFLAGS = -Tlinker.ld -nostartfiles -Wl,--gc-sections
 LIBS = -lm -lc
 
 # Sources
-SRC = $(wildcard src/*.c) \
-      $(wildcard lib/SPL/src/*.c)
+BUILD_DIR = build
 
-STARTUP = startup/startup_stm32f10x_md.s
+APP = $(wildcard app/*.c)
+DRIVER = $(wildcard driver/src/*.c)
+SYSTEM = $(wildcard system/src/*.c)
+STARTUP = ./startup_stm32f10x_md.s
 
-OBJ = $(SRC:.c=.o) $(STARTUP:.s=.o)
-OUT = build/test.elf
+OBJ = $(APP:%.c=$(BUILD_DIR)/%.o) \
+      $(STARTUP:%.s=$(BUILD_DIR)/%.o) \
+	  $(DRIVER:%.c=$(BUILD_DIR)/%.o) \
+	  $(SYSTEM:%.c=$(BUILD_DIR)/%.o)
+
+OUT = ${BUILD_DIR}/app.elf
 
 # Rules
 all: $(OUT)
+	@echo "📏 Firmware size:"
+	@arm-none-eabi-size $(OUT)
+	@echo "=================================="
+	@echo "✅ BUILD SUCCESS"
+	@echo "📦 Output: $(OUT)"
+	@echo "=================================="
 
 $(OUT): $(OBJ)
 	mkdir -p build
+	@echo "🔧 Linking..."
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS) $(LIBS)
-	$(OBJCOPY) -O ihex $@ build/test.hex
-	$(OBJCOPY) -O binary $@ build/test.bin
 
-%.o: %.c
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o: %.s
+$(BUILD_DIR)/%.o: %.s
+	@mkdir -p $(dir $@)
 	$(AS) -mcpu=cortex-m3 -mthumb $< -o $@
 
 clean:
-	rm -rf src/*.o lib/SPL/src/*.o build/*
+	rm -rf build
