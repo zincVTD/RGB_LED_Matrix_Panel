@@ -3,7 +3,7 @@
         {
             "name": "STM32",
             "includePath": [
-                "${workspaceFolder}/include",
+                "${workspaceFolder}/system/inc",
                 "D:/ARM GNU Toolchain/10 2021.10/arm-none-eabi/include",
                 "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/Include",
                 "D:/Keil Core/ARM/ARMCC/include",
