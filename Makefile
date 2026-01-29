@@ -18,7 +18,7 @@ BUILD_DIR = build
 APP = $(wildcard app/*.c)
 DRIVER = $(wildcard driver/src/*.c)
 SYSTEM = $(wildcard system/src/*.c)
-STARTUP = ./startup_stm32f10x_md.s
+STARTUP = system/src/startup_stm32f10x_md.s
 
 OBJ = $(APP:%.c=$(BUILD_DIR)/%.o) \
       $(STARTUP:%.s=$(BUILD_DIR)/%.o) \
