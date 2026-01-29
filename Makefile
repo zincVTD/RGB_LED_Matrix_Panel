@@ -29,11 +29,11 @@ OUT = ${BUILD_DIR}/app.elf
 
 # Rules
 all: $(OUT)
-	@echo "📏 Firmware size:"
+	@echo "Firmware size:"
 	@arm-none-eabi-size $(OUT)
 	@echo "=================================="
-	@echo "✅ BUILD SUCCESS"
-	@echo "📦 Output: $(OUT)"
+	@echo "BUILD SUCCESS"
+	@echo "Output: $(OUT)"
 	@echo "=================================="
 
 $(OUT): $(OBJ)
