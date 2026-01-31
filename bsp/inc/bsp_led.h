@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
-#include <stdbool.h>
+#include <stdio.h>
 
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
@@ -106,6 +106,13 @@ typedef struct
 
 typedef uint64_t BSP_LED_Type_t;
 
+typedef struct
+{
+    uint8_t major;
+    uint8_t minor;
+    uint8_t patch;
+} BSP_LED_Version_t;
+
 /* ===== Lifecycle ===== */
 BSP_LED_Return_t BSP_LED_Init(BSP_LED_Channel_t channel);
 BSP_LED_Return_t BSP_LED_DeInit(BSP_LED_Channel_t channel);
@@ -117,5 +124,8 @@ BSP_LED_Return_t BSP_LED_Toggle(BSP_LED_Channel_t channel);
 
 /* ===== Multi-channel control ===== */
 BSP_LED_Return_t BSP_LED_SetMask(BSP_LED_Type_t mask, BSP_LED_State_t state);
+
+/* ===== Version ===== */
+void BSP_LED_Get_Version(void);
 
 #endif /* BSP_LED_H */

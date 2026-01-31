@@ -1,5 +1,7 @@
 #include "bsp_led.h"
 
+static const BSP_LED_Version_t version = {1, 0, 0};
+
 /* ================== HW mapping ================== */
 static const BSP_LED_Hw_t led_hw_map[LED_CH_MAX] = {
     /* GPIOA: LED_CH0 -> LED_CH15 */
@@ -240,10 +242,15 @@ BSP_LED_Return_t BSP_LED_SetMask(BSP_LED_Type_t mask, BSP_LED_State_t state)
     {
         if (mask & (1 << i))
         {
-            GPIO_WriteBits(led_hw_map[i].port, led_hw_map[i].pin, state);
+            GPIO_WriteBit(led_hw_map[i].port, led_hw_map[i].pin, state);
             led_state[i] = state;
         }
     }
 
     return BSP_LED_OK;
+}
+
+void BSP_LED_Get_Version(void)
+{
+    printf("BSP LED version: %d.%d.%d\n", version.major, version.minor, version.patch);
 }
