@@ -3,13 +3,11 @@
         {
             "name": "STM32",
             "includePath": [
-                "${workspaceFolder}/system/inc",
-                "D:/ARM GNU Toolchain/10 2021.10/arm-none-eabi/include",
-                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/Include",
-                "D:/Keil Core/ARM/ARMCC/include",
-                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc",
-                "D:/Keil Core/ARM/PACK/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/templates",
-                "D:/Keil Core/ARM/PACK/ARM/CMSIS/5.3.0/CMSIS/Include"
+                "${workspaceFolder}/system/inc/",
+                "${workspaceFolder}/app/inc/",
+                "${workspaceFolder}/bsp/inc/",
+                "${workspaceFolder}/driver/inc/",
+                "D:/ARM GNU Toolchain/10 2021.10/arm-none-eabi/include"
             ],
             "defines": [
                 "STM32F103xB",
