@@ -7,7 +7,7 @@
             "request": "launch",
             "servertype": "openocd",
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceFolder}/build/test.elf",
+            "executable": "${workspaceFolder}/build/app.elf",
             "device": "STM32F103C8Tx",
             "configFiles": [
                 "D:/OpenOCD/xpack-openocd-0.12.0-6/openocd/scripts/interface/stlink.cfg",
