@@ -78,11 +78,23 @@ static const BSP_DO_Hw_t do_hw_map[DO_CH_MAX] = {
 };
 
 /* ================== DO state ================== */
-static BSP_DO_State_t do_state[DO_CH_MAX] = {BSP_DO_STATE_UNINIT};
+static BSP_DO_State_t do_state[DO_CH_MAX];
 
 /* ================== Public API ================= */
 BSP_DO_Return_t BSP_DO_Init(BSP_DO_Channel_t channel)
 {
+    /* DO has been initialized */
+    static uint8_t do_init;
+    do_init = 0;
+    if (do_init == 0)
+    {
+        for (int i = 0; i < DO_CH_MAX; i++)
+        {
+            do_state[i] = BSP_DO_STATE_UNINIT;
+        }
+        do_init = 1;
+    }
+
     /* Parameter check */
     if (channel >= DO_CH_MAX || channel < DO_CH0)
     {
@@ -252,5 +264,5 @@ BSP_DO_Return_t BSP_DO_SetMask(BSP_DO_Type_t mask, BSP_DO_State_t state)
 
 void BSP_DO_Get_Version(void)
 {
-    printf("BSP DO version: %d.%d.%d\n", version.major, version.minor, version.patch);
+    // printf("BSP DO version: %d.%d.%d\n", version.major, version.minor, version.patch);
 }
