@@ -24,7 +24,7 @@
                 "-f",
                 "target/stm32f1x.cfg",
                 "-c",
-                "program build/test.elf verify reset exit"
+                "program build/app.elf verify reset exit"
             ],
             "group": {
                 "kind": "none"
