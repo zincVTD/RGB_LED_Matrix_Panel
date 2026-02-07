@@ -84,8 +84,7 @@ static BSP_DO_State_t do_state[DO_CH_MAX];
 BSP_DO_Return_t BSP_DO_Init(BSP_DO_Channel_t channel)
 {
     /* DO has been initialized */
-    static uint8_t do_init;
-    do_init = 0;
+    static uint8_t do_init = 0;
     if (do_init == 0)
     {
         for (int i = 0; i < DO_CH_MAX; i++)
