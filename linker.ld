@@ -34,10 +34,6 @@ SECTIONS
     . = ALIGN(8);
     _estack = ORIGIN(RAM) + LENGTH(RAM);
     _sidata = LOADADDR(.data);
-    _sdata = .;
-    _edata = .;
-    _sbss = .;
-    _ebss = .;
   }
 
   _end = .;
