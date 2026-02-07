@@ -1,6 +1,6 @@
 #include "bsp_do.h"
 
-static const BSP_DO_Version_t version = {1, 0, 0};
+static const BSP_DO_Version_t version = {1, 0, 1};
 
 /* ================== HW mapping ================== */
 static const BSP_DO_Hw_t do_hw_map[DO_CH_MAX] = {
