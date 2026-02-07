@@ -52,5 +52,8 @@ $(BUILD_DIR)/%.o: %.s
 	@mkdir -p $(dir $@)
 	$(AS) -mcpu=cortex-m3 -mthumb $< -o $@
 
+flash: $(OUT)
+	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg -c "program $(OUT) verify reset exit"
+
 clean:
 	rm -rf build
