@@ -11,7 +11,7 @@ CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -Wall -g -O0 \
 	-DUSE_STDPERIPH_DRIVER
 
 LDFLAGS = -Tlinker.ld -nostartfiles -Wl,--gc-sections
-LIBS = -lm -lc
+LIBS = --specs=nosys.specs -lm -lc
 
 # Sources
 BUILD_DIR = build
