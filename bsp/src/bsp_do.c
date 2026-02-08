@@ -263,5 +263,5 @@ BSP_DO_Return_t BSP_DO_SetMask(BSP_DO_Type_t mask, BSP_DO_State_t state)
 
 void BSP_DO_Get_Version(void)
 {
-    // printf("BSP DO version: %d.%d.%d\n", version.major, version.minor, version.patch);
+    printf("BSP DO version: %d.%d.%d\n", version.major, version.minor, version.patch);
 }
