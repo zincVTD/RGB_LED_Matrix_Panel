@@ -1,39 +1,26 @@
-#include "stm32f10x.h"
-#include "stm32f10x_rcc.h"
-#include "stm32f10x_gpio.h"
-#include "stm32f10x_tim.h"
-
-void delay(uint16_t time)
-{
-    TIM_SetCounter(TIM2, 0);
-    while (TIM_GetCounter(TIM2) < time * 10)
-        ;
-}
+#include "bsp_do.h"
+#include "bsp_uart.h"
 
 int main()
 {
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    BSP_UART_Config_t cfg = BSP_UART_DEFAULT_CONFIG;
+    BSP_UART_Init(BSP_UART1, &cfg);
 
-    GPIO_InitTypeDef gpio;
-    gpio.GPIO_Pin = GPIO_Pin_13;
-    gpio.GPIO_Mode = GPIO_Mode_Out_PP;
-    gpio.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOC, &gpio);
+    BSP_DO_Return_t ret = BSP_DO_Init(DO_CH45);
 
-    TIM_TimeBaseInitTypeDef tim;
-    tim.TIM_ClockDivision = TIM_CKD_DIV1;
-    tim.TIM_CounterMode = TIM_CounterMode_Up;
-    tim.TIM_Period = 0xFFFF;
-    tim.TIM_Prescaler = 7200 - 1;
-    TIM_TimeBaseInit(TIM2, &tim);
-    TIM_Cmd(TIM2, ENABLE);
+    if (ret != BSP_DO_OK)
+    {
+        printf("BSP DO init error: %d\n", ret);
+    }
+
+    ret = BSP_DO_Set_State(DO_CH45, BSP_DO_STATE_LOW);
+    if (ret != BSP_DO_OK)
+    {
+        printf("BSP DO set state error: %d\n", ret);
+    }
 
     while (1)
     {
-        GPIO_SetBits(GPIOC, GPIO_Pin_13);
-        delay(1000);
-        GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-        delay(1000);
     }
 }
