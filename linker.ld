@@ -16,11 +16,18 @@ SECTIONS
     KEEP(*(.fini))
   } > FLASH
 
-  .data : AT(ADDR(.text) + SIZEOF(.text)) {
+  .ARM.exidx :
+  {
+    __exidx_start = .;
+    *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+    __exidx_end = .;
+  } > FLASH
+
+  .data : {
     _sdata = .;
     *(.data*)
     _edata = .;
-  } > RAM
+  } > RAM AT > FLASH
 
   .bss : {
     _sbss = .;
@@ -36,5 +43,6 @@ SECTIONS
     _sidata = LOADADDR(.data);
   }
 
+  end = .;
   _end = .;
 }
