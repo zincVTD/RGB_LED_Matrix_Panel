@@ -94,7 +94,7 @@
 
 /** Location stamp: appended when LOG_SHOW_LOCATION == 1 */
 #if LOG_SHOW_LOCATION
-#define _LOG_LOCATION_FMT " [%s:%d]"
+#define _LOG_LOCATION_FMT "[%s:%d]"
 #define _LOG_LOCATION_ARGS , __FILE__, __LINE__
 #else
 #define _LOG_LOCATION_FMT ""
@@ -103,7 +103,7 @@
 
 /** Function stamp: appended when LOG_SHOW_FUNC == 1 */
 #if LOG_SHOW_FUNC
-#define _LOG_FUNC_FMT " [%s]"
+#define _LOG_FUNC_FMT "[%s]"
 #define _LOG_FUNC_ARGS , __func__
 #else
 #define _LOG_FUNC_FMT ""
@@ -117,9 +117,9 @@
  *   _fmt     — user's format string
  *   __VA_ARGS__ — user's variadic arguments
  */
-#define _LOG_WRITE(_color, _tag, _fmt, ...)                                           \
-    printf(_color "[" _tag "]" _LOG_LOCATION_FMT _LOG_FUNC_FMT                        \
-                  " " _fmt _LOG_COLOR_RESET "\r\n" _LOG_LOCATION_ARGS _LOG_FUNC_ARGS, \
+#define _LOG_WRITE(_color, _tag, _fmt, ...)                                            \
+    printf(_color "[" _tag "]" _LOG_LOCATION_FMT _LOG_FUNC_FMT                         \
+                  ": " _fmt _LOG_COLOR_RESET "\r\n" _LOG_LOCATION_ARGS _LOG_FUNC_ARGS, \
            ##__VA_ARGS__)
 
 /* =========================================================================
@@ -134,7 +134,7 @@
  */
 #if LOG_LEVEL_INFO_ENABLE
 #define LOG_INFO(_fmt, ...) \
-    _LOG_WRITE(_LOG_COLOR_INFO, "INFO ", _fmt, ##__VA_ARGS__)
+    _LOG_WRITE(_LOG_COLOR_INFO, "INFO", _fmt, ##__VA_ARGS__)
 #else
 #define LOG_INFO(_fmt, ...) \
     do                      \
@@ -147,7 +147,7 @@
  */
 #if LOG_LEVEL_WARN_ENABLE
 #define LOG_WARN(_fmt, ...) \
-    _LOG_WRITE(_LOG_COLOR_WARN, "WARN ", _fmt, ##__VA_ARGS__)
+    _LOG_WRITE(_LOG_COLOR_WARN, "WARN", _fmt, ##__VA_ARGS__)
 #else
 #define LOG_WARN(_fmt, ...) \
     do                      \
@@ -188,7 +188,7 @@
  */
 #if LOG_LEVEL_VERBOSE_ENABLE
 #define LOG_VERBOSE(_fmt, ...) \
-    _LOG_WRITE(_LOG_COLOR_VERBOSE, "VERB ", _fmt, ##__VA_ARGS__)
+    _LOG_WRITE(_LOG_COLOR_VERBOSE, "VERB", _fmt, ##__VA_ARGS__)
 #else
 #define LOG_VERBOSE(_fmt, ...) \
     do                         \

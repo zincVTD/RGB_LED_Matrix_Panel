@@ -13,6 +13,7 @@ CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -Wall -g -O0 \
 CFLAGS += -DLOG_USE_COLOR=0 \
 		  -DLOG_SHOW_LOCATION=1 \
 		  -DLOG_SHOW_FUNC=1 \
+		  -DLOG_ENABLE=1 \
 		  -DLOG_LEVEL_INFO_ENABLE=1
 
 LDFLAGS = -Tlinker.ld -nostartfiles -Wl,--gc-sections
