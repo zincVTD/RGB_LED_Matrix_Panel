@@ -117,9 +117,9 @@
  *   _fmt     — user's format string
  *   __VA_ARGS__ — user's variadic arguments
  */
-#define _LOG_WRITE(_color, _tag, _fmt, ...)                                            \
-    printf(_color "[" _tag "]" _LOG_LOCATION_FMT _LOG_FUNC_FMT                         \
-                  ": " _fmt _LOG_COLOR_RESET "\r\n" _LOG_LOCATION_ARGS _LOG_FUNC_ARGS, \
+#define _LOG_WRITE(_color, _tag, _fmt, ...)                                          \
+    printf(_color "[" _tag "]" _LOG_LOCATION_FMT _LOG_FUNC_FMT                       \
+                  ": " _fmt _LOG_COLOR_RESET "\r" _LOG_LOCATION_ARGS _LOG_FUNC_ARGS, \
            ##__VA_ARGS__)
 
 /* =========================================================================
