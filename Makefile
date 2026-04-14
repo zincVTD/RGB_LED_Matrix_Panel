@@ -10,6 +10,12 @@ CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -Wall -g -O0 \
 	-DSTM32F10X_MD \
 	-DUSE_STDPERIPH_DRIVER
 
+CFLAGS += -DLOG_USE_COLOR=0 \
+		  -DLOG_SHOW_LOCATION=1 \
+		  -DLOG_SHOW_FUNC=1 \
+		  -DLOG_ENABLE=1 \
+		  -DLOG_LEVEL_INFO_ENABLE=1
+
 LDFLAGS = -Tlinker.ld -nostartfiles -Wl,--gc-sections
 LIBS = --specs=nosys.specs -lm -lc
 

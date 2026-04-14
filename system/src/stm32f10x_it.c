@@ -1,31 +1,31 @@
 /**
-  ******************************************************************************
-  * @file    Project/STM32F10x_StdPeriph_Template/stm32f10x_it.c 
-  * @author  MCD Application Team
-  * @version V3.6.0
-  * @date    20-September-2021
-  * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and 
-  *          peripherals interrupt service routine.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2011 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    Project/STM32F10x_StdPeriph_Template/stm32f10x_it.c
+ * @author  MCD Application Team
+ * @version V3.6.0
+ * @date    20-September-2021
+ * @brief   Main Interrupt Service Routines.
+ *          This file provides template for all exceptions handler and
+ *          peripherals interrupt service routine.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2011 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
-  * @{
-  */
+ * @{
+ */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -37,7 +37,7 @@
 /******************************************************************************/
 /*            Cortex-M3 Processor Exceptions Handlers                         */
 /******************************************************************************/
-
+#if 0
 /**
   * @brief  This function handles NMI exception.
   * @param  None
@@ -140,6 +140,7 @@ void SysTick_Handler(void)
 {
 }
 #endif
+#endif
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
@@ -148,14 +149,14 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles PPP interrupt request.
+ * @param  None
+ * @retval None
+ */
 /*void PPP_IRQHandler(void)
 {
 }*/
 
 /**
-  * @}
-  */ 
+ * @}
+ */
