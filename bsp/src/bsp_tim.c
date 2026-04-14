@@ -3,7 +3,7 @@
  * @brief   BSP Timer implementation using SPL
  */
 
-#include "bsp_timer.h"
+#include "bsp_tim.h"
 
 /*============================================================================
  *                          PRIVATE DEFINITIONS
